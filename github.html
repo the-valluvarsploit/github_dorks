@@ -1,0 +1,724 @@
+<html>
+    <head>
+        <title>ValluvarSploit's Github Dorks</title>
+        <link rel="stylesheet" type="text/css" href="assets/bootstrap.css">
+        <link href="https://fonts.googleapis.com/css?family=Merienda+One" rel="stylesheet" type="text/css">
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+        <style>
+            body {
+                    background-image: url("assets/background.jpg");
+                    color:#FFF;
+                    font-size: 14pt;
+                    font-family:"Merienda One";
+                    font-weight: bold;
+                    padding: 0px;
+            }
+
+            a {
+                color:#fff;
+                text-decoration:none;
+            }
+
+            a:hover {
+                color:#35da32;
+            }
+
+            .center-block {
+                 margin: auto;
+                 display: block;
+            }
+
+            .split {
+                height: 100%;
+                width: 50%;
+                position:absolute;
+                z-index: 1;
+                top: 20%;
+                overflow-x: visible;
+                padding-top: 20px;
+            }
+
+            .left {
+                left: 0;
+            }
+
+            .right {
+                right: 0;
+            }
+
+            .mytooltip {
+                position: relative;
+                display: inline-block;
+                font-size: 18px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            .mytooltip .tooltiptext {
+                visibility: hidden;
+                width: 300px;
+                background-color: #333;
+                color: #fff;
+                text-align: left;
+                border-radius: 10px;
+                padding: 10px;
+                font-size: 14px;
+                position: absolute;
+                z-index: 1;
+                top: 100%;
+                left: 100%;
+                margin-left: 10px;
+                transform: translateY(-50%);
+                opacity: 0;
+                transition: opacity 0.3s;
+                box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            }
+
+        .mytooltip:hover .tooltiptext {
+                visibility: visible;
+                opacity: 1;
+        }
+        </style>
+    </head>
+    <body>
+        <script>
+            function github_it(type) {
+                target = document.getElementById('domain').value;
+
+                if (target === "") {
+                    return;
+                }
+                url = 'https://github.com/search?q=';
+
+                switch(type) {
+                    case 1:
+                        url += target + '+filename:.dockercfg';
+                        break;
+                    case 2:
+                        url += target + '+docker+AND+auth+AND+email';
+                        break;
+                    case 3:
+                        url += target + '+filename:firefox/logins.json';
+                        break;
+                    case 4:
+                        url += target + '+encryptedUsername+encryptedPassword';
+                        break;
+                    case 5:
+                        url += target + '+filename:.ssh/id_rsa';
+                        break;
+                    case 6:
+                        url += target + '+"BEGIN+RSA+PRIVATE+KEY"+OR+ssh-rsa';
+                        break;
+                    case 7:
+                        url += target + '+filename:sftp.json';
+                        break;
+                    case 8:
+                        url += target + '+host+AND+pass';
+                        break;
+                    case 9:
+                        url += target + '+filename:.credentials';
+                        break;
+                    case 10:
+                        url += target + '+aws_secret_access_key+aws_secret_key+aws_access_key_id';
+                        break;
+                    case 11:
+                        url += target + '+filename:.s3cfg';
+                        break;
+                    case 12:
+                        url += target + '+secret_key';
+                        break;
+                    case 13:
+                        url += target + '+filename:.tugboat';
+                        break;
+                    case 14:
+                        url += target + '+authentication+AND+api_key';
+                        break;
+                    case 15:
+                        url += target + 'filename:heroku.json';
+                        break;
+                    case 16:
+                        url += target + '+HEROKU_API_KEY+OR+HEROKU_KEY';
+                        break;
+                    case 17:
+                        url += target + '+filename:.pgpass';
+                        break;
+                    case 18:
+                        url += target + '+:database:';
+                        break;
+                    case 19:
+                        url += target + '+filename:dbeaver-data-sources.xml';
+                        break;
+                    case 20:
+                        url += target + '+connection+AND+jdbc';
+                        break;
+                    case 21:
+                        url += target + '+filename:dump.sql';
+                        break;
+                    case 22:
+                        url += target + '+"MySQL+dump"+AND+"INSERT+INTO"';
+                        break;
+                    case 23:
+                        url += target + '+filename:mongoid.yml';
+                        break;
+                    case 24:
+                        url += target + '+production+AND+mongodb';
+                        break;
+                    case 25:
+                        url += target + '+filename:robomongo.json';
+                        break;
+                    case 26:
+                        url += target + '+userPassword+AND+serverHost';
+                        break;
+                    case 27:
+                        url += target + '+filename:filezilla.xml';
+                        break;
+                    case 28:
+                        url += target + '+FileZilla3+AND+"Pass+encoding"';
+                        break;
+                    case 29:
+                        url += target + '+filename:cert-key.pem';
+                        break;
+                    case 30:
+                        url += target + '+"BEGIN+PRIVATE+KEY"';
+                        break;
+                    case 31:
+                        url += target + '+filename:putty extension:ppk';
+                        break;
+                    case 32:
+                        url += target + '+PuTTY-User-Key-File';
+                        break;
+                    case 33:
+                        url += target + '+filename:settings.py';
+                        break;
+                    case 34:
+                        url += target + '+SECRET_KEY';
+                        break;
+                    case 35:
+                        url += target + '+filename:salesforce.js';
+                        break;
+                    case 36:
+                        url += target + '+"conn.login("+OR+"+require(jsforce)"';
+                        break;
+                    case 37:
+                        url += target + '+filename:secrets.yml';
+                        break;
+                    case 38:
+                        url += target + '+secret_key_base';
+                        break;
+                    case 39:
+                        url += target + '+filename:credentials.yml';
+                        break;
+                    case 40:
+                        url += target + '+slack_token+OR+access-token+OR+_TOKEN';
+                        break;
+                    case 41:
+                        url += target + '+filename:.travis.yml';
+                        break;
+                    case 42:
+                        url += target + '+notification+AND+slack+OR+secure';
+                        break;
+                    case 43:
+                        url += target + '+filename:.env';
+                        break;
+                    case 44:
+                        url += target + '+APP_KEY+OR+DB_PASS';
+                        break;
+                    case 45:
+                        url += target + '+filename:config.php';
+                        break;
+                    case 46:
+                        url += target + '+mysql_connect+OR+dbpass';
+                        break;
+                    case 47:
+                        url += target + '+filename:wp-config.php';
+                        break;
+                    case 48:
+                        url += target + '+DB_PASSWORDt+OR+AUTH_KEY';
+                        break;
+                    case 49:
+                        url += target + '+filename:.esmtprc';
+                        break;
+                    case 50:
+                        url += target + '+"hostname+smtp"';
+                        break;
+                    case 51:
+                        url += target + '+filename:.ftpconfig';
+                        break;
+                    case 52:
+                        url += target + '+protocol+AND+ftp+AND+pass';
+                        break;
+                    case 53:
+                        url += target + '+filename:.netrc';
+                        break;
+                    case 54:
+                        url += target + '+machine+AND+login+AND+password';
+                        break;
+                    case 55:
+                        url += target + '+filename:.npmrc';
+                        break;
+                    case 56:
+                        url += target + '+registry+AND+_auth+OR+_authToken';
+                        break;
+                    case 57:
+                        url += target + '+filename:.remote-sync.json';
+                        break;
+                    case 58:
+                        url += target + '+"remote+sync"+AND+pass';
+                        break;
+                    case 59:
+                        url += target + '+filename:config';
+                        break;
+                    case 60:
+                        url += target + '+IRC_HOST+AND+IRC_PASS';
+                        break;
+                    case 61:
+                        url += target + '+filename:deployment-config.json';
+                        break;
+                    case 62:
+                        url += target + '+type+AND+sftp+AND+pass';
+                        break;
+                    case 63:
+                        url += target + '+filename:hub oauth_token';
+                        break;
+                    case 64:
+                        url += target + '+github.com+AND+user+AND+oauth_token';
+                        break;
+                    case 65:
+                        url += target + '+filename:ventrillo_srv.ini';
+                        break;
+                    case 66:
+                        url += target + '+Admis3cfgrd+AND+Password';
+                        break;
+                    case 67:
+                        url += target + '+access_token=EAACEdEose0cBA';
+                        break;
+                    case 68:
+                        url += target + '+EAACEdEose0cBA';
+                        break;
+                    case 69:
+                        url += target + '+AWS_ACCESS_KEY_ID=AKIA';
+                        break;
+                    case 70:
+                        url += target + '+AWSAccessKeyId=A3T';
+                        break;
+                    case 71:
+                        url += target + '+AWS_ACCESS_KEY_ID=AGPA';
+                        break;
+                    case 72:
+                        url += target + '+AWSAccessKeyId=ANPA';
+                        break;
+                    case 73:
+                        url += target + '+AWS_ACCESS_KEY_ID=ASIA';
+                        break;
+                    case 74:
+                        url += target + '+AIza';
+                        break;
+                    case 75:
+                        url += target + '+key=Alza';
+                        break;
+                    case 76:
+                        url += target + '+ya29';
+                        break;
+                    case 77:
+                        url += target + '+secret=6L';
+                        break;
+                    case 78:
+                        url += target + '+"API+key"';
+                        break;
+                    case 79:
+                        url += target + '+"authorization:+Bearer"';
+                        break;
+                    case 80:
+                        url += target + '+authorization+AND+Client+AND+sq0';
+                        break;
+                    case 81:
+                        url += target + '+access_token:sq0atp';
+                        break;
+                    case 82:
+                        url += target + '+authorization+AND+Client+AND+EAAA';
+                        break;
+                    case 83:
+                        url += target + '+client_id:sq0';
+                        break;
+                    case 84:
+                        url += target + '+"api:key-"';
+                        break;
+                    case 85:
+                        url += target + '+mailgun+AND+key';
+                        break;
+                    case 86:
+                        url += target + '+sk_live_';
+                        break;
+                    case 87:
+                        url += target + '+rk_live_';
+                        break;
+                    case 88:
+                        url += target + '+Authorization+AND+Heroku';
+                        break;
+                    case 89:
+                        url += target + '+hapikey';
+                        break;
+                    case 90:
+                        url += target + '+hubapi+AND+hapikey';
+                        break;
+                    case 91:
+                        url += target + '+x-pendo-integration-key';
+                        break;
+                    case 92:
+                        url += target + '+x-pendo-key';
+                        break;
+                    case 93:
+                        url += target + '+x-api-key';
+                        break;
+                    case 94:
+                        url += target + '+req.Header.Add+AND+key';
+                        break;
+                    case 95:
+                        url += target + '+access_token=sk';
+                        break;
+                    case 96:
+                        url += target + '+access_token+AND+sk.eyJ';
+                        break;
+                    case 97:
+                        url += target + '+x-algolia-api-key';
+                        break;
+                    case 98:
+                        url += target + '+algolia+AND+key';
+                        break;
+                    case 99:
+                        url += target + '+pagerduty+AND+authorization+AND+token';
+                        break;
+                    case 100:
+                        url += target + '+pagerduty+AND+token';
+                        break;
+                    case 101:
+                        url += target + '+branch_secret=';
+                        break;
+                    case 102:
+                        url += target + '+branch+AND+branch_secret';
+                        break;
+                    case 103:
+                        url += target + '+wpe_apikey=';
+                        break;
+                    case 104:
+                        url += target + '+wpengine+AND+wpe_apikey';
+                        break;
+                    case 105:
+                        url += target + '+api_key+AND+application_key';
+                        break;
+                    case 106:
+                        url += target + '+datadoghq+AND+api_key';
+                        break;
+                    case 107:
+                        url += target + '+private_token';
+                        break;
+                    case 108:
+                        url += target + '+gitlab+AND+private_token';
+                        break;
+                    case 109:
+                        url += target + '+circle-token';
+                        break;
+                    case 110:
+                        url += target + '+circle+AND+token';
+                        break;
+                    case 111:
+                        url += target + '+artifactory_key';
+                        break;
+                    case 112:
+                        url += target + '+artifactory+AND+key';
+                        break;
+                    case 113:
+                        url += target + '+.eyJ';
+                        break;
+                    case 114:
+                        url += target + '+Authorization+OR+JWT+AND+eyJ';
+                        break;
+                    case 115:
+                        url += target + '+filename:webservers.xml';
+                        break;
+                    case 116:
+                        url += target + '+fileTransfer+AND+pass';
+                        break;
+                    case 117:
+                        url += target + '+security_credentials';
+                        break;
+                    case 118:
+                        url += target + '+password+OR+pwd';
+                        break;
+                    case 119:
+                        url += target + '+bucket_password';
+                        break;
+                    case 120:
+                        url += target + '+redis_password';
+                        break;
+                    case 121:
+                        url += target + '+root_password';
+                        break;
+                    case 122:
+                        url += target + '+_TOKEN+OR+_KEY';
+                        break;
+                    case 123:
+                        url += target + '+JIRA_Pass+OR+jira_password';
+                        break;
+                    case 124:
+                        url += target + '+ssh2_auth_password';
+                        break;
+                    case 125:
+                        url += target + '+secret_access_key';
+                        break;
+                    case 126:
+                        url += target + '+send_keys+OR+sendkeys'
+                        break;
+                    case 127:
+                        url += target + '+consumerkey';
+                        break;
+                    case 128:
+                        url += target + '+SSO_LOGIN';
+                        break;
+                    case 129:
+                        url += target + '+connectionstring';
+                        break;
+                    case 130:
+                        url += target + '+JDBC';
+                        break;
+                    case 131:
+                        url += target + '+END_USER_USERNAME=';
+                        break;
+                    case 132:
+                        url += target + '+END_USER_Password=';
+                        break;
+                    case 133:
+                        url += target + '+FIREBASE_KEY=';
+                        break;
+                    case 134:
+                        url += target + '+GITHUB_TOKEN=';
+                        break;
+                    case 135:
+                        url += target + '+ENV_KEY=';
+                        break;
+                    case 136:
+                        url += target + '+secret';
+                        break;
+                    case 137:
+                        url += target + '+credentials';
+                        break;
+                    case 138:
+                        url += target + '+token';
+                        break;
+                    case 139:
+                        url += target + '+config';
+                        break;
+                    case 140:
+                        url += target + '+key';
+                        break;
+                    case 141:
+                        url += target + '+pass';
+                        break;
+                    case 142:
+                        url += target + '+login'
+                        break;
+                    case 143:
+                        url += target + '+ftp';
+                        break;
+                    case 144:
+                        url += target + '+pwd';
+                        break;
+                }
+                url += '&type=code'
+                window.open(url)
+            }
+        </script>
+        
+        <div style="font-family: Merienda one;text-align: center;font-size: 25pt; text-shadow: 0 0 6px #ff7300, 0 0 5px #ff7300, 0 0 5px #ff7300;color: #FFF">
+            Github Dorks - Org/User<br>
+        </div><br/>
+
+        <form>
+            <input type="text" id="domain" class="form-control form-control-lg w-50 text-center center-block" placeholder="org:bugcrowd OR user:codingo" autofocus="" />
+        </form>
+
+        <div class="split left" style="text-align: left">
+            <div style="display: inline-block; text-align: left;">
+                &#128269; 
+                <a href="#" onclick="github_it(1)" class="mytooltip">
+                    .docker/.dockercfg
+                    <span class="tooltiptext"><h6>Docker Registry Authentication Data:</h6>Configuration file used by the Docker client to authenticate to a Docker registry. It contains username, password, and email for the registry and is used to push and pull Docker images.<br><br>Look for:<br>1. auth</span>
+                </a>
+                <br/>
+                &#128269; 
+                <a href="#" onclick="github_it(2)" class="mytooltip">
+                    .docker/.dockercfg - II
+                    <span class="tooltiptext"><h6>Docker Registry Authentication Data:</h6>Configuration file used by the Docker client to authenticate to a Docker registry. It contains username, password, and email for the registry and is used to push and pull Docker images.<br><br>Look for:<br>1. auth</span>
+                </a>
+                <br/>
+                &#128269; 
+                <a href="#" onclick="github_it(3)" class="mytooltip">
+                    .mozilla/firefox/logins.json
+                    <span class="tooltiptext"><h6>Firefox Saved Password Collection</h6>This file is a part of the password manager in the Firefox browser. It contains saved login credentials, such as usernames and passwords, that the user has saved while logging into websites.<br><br>Look for:<br>1. encryptedUsername<br>2. encryptedPassword</span>
+                </a>
+                <br/>
+                &#128269; 
+                <a href="#" onclick="github_it(4)" class="mytooltip">
+                    .mozilla/firefox/logins.json - II
+                    <span class="tooltiptext"><h6>Firefox Saved Password Collection</h6>This file is a part of the password manager in the Firefox browser. It contains saved login credentials, such as usernames and passwords, that the user has saved while logging into websites.<br><br>Look for:<br>1. encryptedUsername<br>2. encryptedPassword</span>
+                </a>
+                <br/>
+                &#128269; 
+                <a href="#" onclick="github_it(5)" class="mytooltip">
+                    .ssh/id_rsa and .ssh/id_rsa.pub
+                    <span class="tooltiptext"><h6>RSA SSH Keys</h6>These files are RSA private/public keys used in the Secure Shell (SSH) protocol. It is used to authenticate the user to a remote server, allowing them to establish an encrypted and secure connection.</span>
+                </a>
+                <br/>
+                &#128269; 
+                <a href="#" onclick="github_it(6)" class="mytooltip">
+                    .ssh/id_rsa and .ssh/id_rsa.pub - II
+                    <span class="tooltiptext"><h6>RSA SSH Keys</h6>These files are RSA private/public keys used in the Secure Shell (SSH) protocol. It is used to authenticate the user to a remote server, allowing them to establish an encrypted and secure connection.</span>
+                </a>
+                <br/>
+                &#128269; <a href="#" onclick="github_it(7)">SFTP OR SSH Server Credentials (.vscode/sftp.json) - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(8)">SFTP OR SSH Server Credentials (.vscode/sftp.json) - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(9)">S3 Credentials[1] (cloud/.credentials) - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(10)">S3 Credentials[1] (cloud/.credentials) - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(11)">S3 Credentials[2] (cloud/.s3cfg)- I</a><br/>
+                &#128269; <a href="#" onclick="github_it(12)">S3 Credentials[2] (cloud/.s3cfg)- II</a><br/>
+                &#128269; <a href="#" onclick="github_it(13)">Digital Ocean Tugboat Config (cloud/.tugboatIs) - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(14)">Digital Ocean Tugboat Config (cloud/.tugboatIs) - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(15)">Heroku Config (cloud/heroku.json)- I</a><br/>
+                &#128269; <a href="#" onclick="github_it(16)">Heroku Config (cloud/heroku.json)- II</a><br/>
+                &#128269; <a href="#" onclick="github_it(17)">PostgreSQL Passwords (db/.pgpass) - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(18)">PostgreSQL Passwords (db/.pgpass) - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(19)">DBeaver Config Credentials (db/dbeaver-data-sources.xml) - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(20)">DBeaver Config Credentials (db/dbeaver-data-sources.xml) - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(21)">MYSQL Hashes Dump (db/dump.sql) - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(22)">MYSQL Hashes Dump (db/dump.sql) - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(23)">Mongoid Config (db/mongoid.yml) - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(24)">Mongoid Config (db/mongoid.yml) - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(25)">Mongolab Credentials For Robomongo (db/robomongo.json) - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(26)">Mongolab Credentials For Robomongo (db/robomongo.json) - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(27)">Filezilla config (filezilla/filezilla.xml OR filezilla/recentservers.xml) - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(28)">Filezilla config (filezilla/filezilla.xml OR filezilla/recentservers.xml) - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(29)">PEM Private Key (cert-key.pem) - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(30)">PEM Private Key (cert-key.pem) - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(31)">PuTTYgen Private Key (Putty-example.ppk) - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(32)">PuTTYgen Private Key (Putty-example.ppk) - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(33)">Django Secret Key(django/settings.py) - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(34)">Django Secret Key(django/settings.py) - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(35)">Salesforce Credentials (salesforce.js) - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(36)">Salesforce Credentials (salesforce.js) - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(37)">Ruby on Rails Credentials (secrets.yml) - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(38)">Ruby on Rails Credentials (secrets.yml) - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(39)">Voice and Chat Platforms Credentials (credentials.yml) - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(40)">Voice and Chat Platforms Credentials (credentials.yml) - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(41)">Slack Token For RocketChat (.travis.yml) - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(42)">Slack Token For RocketChat (.travis.yml) - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(43)">Laravel Credentials (.env) - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(44)">Laravel Credentials (.env) - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(45)">PHP Application Configuration (config.php) - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(46)">PHP Application Configuration (config.php) - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(47)">WordPress Configuration (wp-config.php) - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(48)">WordPress Configuration (wp-config.php) - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(49)">ESMTP Configuration (.esmtprc) - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(50)">ESMTP Configuration (.esmtprc) - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(51)">SFTP OR SSH Server Credentials (.ftpconfig) - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(52)">SFTP OR SSH Server Credentials (.ftpconfig) - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(53)">SMTP Credentials (.netrc) - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(54)">SMTP Credentials (.netrc) - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(55)">NPM Registry Authentication Data (.npmrc) - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(56)">NPM Registry Authentication Data (.npmrc) - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(57)">FTP, SFTP OR SSH Credentials (.remote-sync.json) - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(58)">FTP, SFTP OR SSH Credentials (.remote-sync.json) - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(59)">IRC Configuration (.config) - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(60)">IRC Configuration (.config) - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(61)">Server Details AND Credentials (deployment-config.json OR sftp-config.json) - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(62)">Server Details AND Credentials (deployment-config.json OR sftp-config.json) - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(63)">Hub Configuration - Github Tokens - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(64)">Hub Configuration - Github Tokens - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(65)">Ventrilo Configuration (ventrillo_srv.ini) - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(66)">Ventrilo Configuration (ventrillo_srv.ini) - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(67)">Facebook Access Token - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(68)">Facebook Access Token - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(69)">Amazon AWS Access Key ID - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(70)">Amazon AWS Access Key ID - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(71)">Amazon AWS Access Key ID - III</a><br/>
+                &#128269; <a href="#" onclick="github_it(72)">Amazon AWS Access Key ID - IV</a><br/>
+                &#128269; <a href="#" onclick="github_it(73)">Amazon AWS Access Key ID - V</a><br/>
+                &#128269; <a href="#" onclick="github_it(74)">Google API Key - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(75)">Google API Key - II</a><br/>
+            </div>
+        </div>
+
+        <div class="split right" style="text-align: center">
+            <div style="display: inline-block; text-align: left;">
+                &#128269; <a href="#" onclick="github_it(76)">Google API Key - III</a><br/>
+                &#128269; <a href="#" onclick="github_it(77)">Google API Key - IV</a><br/>
+                &#128269; <a href="#" onclick="github_it(78)">Twitter OAuth - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(79)">Twitter OAuth - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(80)">Square OAuth - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(81)">Square OAuth - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(82)">Square OAuth - III</a><br/>
+                &#128269; <a href="#" onclick="github_it(83)">Square OAuth - IV</a><br/>
+                &#128269; <a href="#" onclick="github_it(84)">Mailgun API - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(85)">Mailgun API - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(86)">Stripe API - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(87)">Stripe API - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(88)">Heroku API</a><br/>
+                &#128269; <a href="#" onclick="github_it(89)">Hub API - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(90)">Hub API - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(91)">Pendo API - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(92)">Pendo API - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(93)">JumpCloud API - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(94)">JumpCloud API - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(95)">Mapbox Secret Keys - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(96)">Mapbox Secret Keys - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(97)">Algolia - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(98)">Algolia - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(99)">Pager Duty - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(100)">Pager Duty - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(101)">Branch.io - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(102)">Branch.io - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(103)">WPEngine - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(104)">WPEngine - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(105)">DatadogHQ - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(106)">DatadogHQ - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(107)">Gitlab - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(108)">Gitlab - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(109)">CirleCI - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(110)">CirleCI - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(111)">Artifactory - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(112)">Artifactory - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(113)">Json Web Token (JWT) - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(114)">Json Web Token (JWT) - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(115)">Web Server Credentials (.idea/webservers.xml) - I</a><br/>
+                &#128269; <a href="#" onclick="github_it(116)">Web Server Credentials (.idea/webservers.xml) - II</a><br/>
+                &#128269; <a href="#" onclick="github_it(117)">security_credentials</a><br/>
+                &#128269; <a href="#" onclick="github_it(118)">password OR pwd</a><br/>
+                &#128269; <a href="#" onclick="github_it(119)">bucket_password</a><br/>
+                &#128269; <a href="#" onclick="github_it(120)">redis_password</a><br/>
+                &#128269; <a href="#" onclick="github_it(121)">root_password</a><br/>
+                &#128269; <a href="#" onclick="github_it(122)">_TOKEN OR _KEY</a><br/>
+                &#128269; <a href="#" onclick="github_it(123)">JIRA_Pass OR jira_password</a><br/>
+                &#128269; <a href="#" onclick="github_it(124)">ssh2_auth_password</a><br/>
+                &#128269; <a href="#" onclick="github_it(125)">secret_access_key</a><br/>
+                &#128269; <a href="#" onclick="github_it(126)">send_keys OR sendkeys</a><br/>
+                &#128269; <a href="#" onclick="github_it(127)">consumerkey</a><br/>
+                &#128269; <a href="#" onclick="github_it(128)">SSO_LOGIN</a><br/>
+                &#128269; <a href="#" onclick="github_it(129)">connectionstring</a><br/>
+                &#128269; <a href="#" onclick="github_it(130)">JDBC</a><br/>
+                &#128269; <a href="#" onclick="github_it(131)">END_USER_USERNAME=</a><br/>
+                &#128269; <a href="#" onclick="github_it(132)">END_USER_Password=</a><br/>
+                &#128269; <a href="#" onclick="github_it(133)">Firebase Key</a><br/>
+                &#128269; <a href="#" onclick="github_it(134)">Github Token</a><br/>
+                &#128269; <a href="#" onclick="github_it(135)">ENV_KEY=</a><br/>
+                &#128269; <a href="#" onclick="github_it(136)">secret</a><br/>
+                &#128269; <a href="#" onclick="github_it(137)">credentials</a><br/>
+                &#128269; <a href="#" onclick="github_it(138)">token</a><br/>
+                &#128269; <a href="#" onclick="github_it(139)">config</a><br/>
+                &#128269; <a href="#" onclick="github_it(140)">key</a><br/>
+                &#128269; <a href="#" onclick="github_it(141)">pass</a><br/>
+                &#128269; <a href="#" onclick="github_it(142)">login</a><br/>
+                &#128269; <a href="#" onclick="github_it(143)">ftp</a><br/>
+                &#128269; <a href="#" onclick="github_it(144)">pwd</a><br/>
+            </div>
+        </div>
+    </body>
+</html>
