@@ -1,12 +1,12 @@
 <html>
 <head>
     <title>ValluvarSploit's GitHub Dorks</title>
-    <link rel="stylesheet" type="text/css" href="assets/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../assets/bootstrap.css">
     <link href="https://fonts.googleapis.com/css?family=Merienda+One" rel="stylesheet" type="text/css">
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
     <style>
         body {
-            background-image: url("assets/background.png");
+            background-image: url("../assets/background.png");
             color:#FFF;
             font-size: 14pt;
             font-family: 'Roboto Mono', monospace;
@@ -19,7 +19,11 @@
         }
 
         a:hover {
-            color:#35da32;
+            color:orange;
+        }
+
+        a.last-clicked {
+            color: green;
         }
 
         .center-block {
@@ -83,43 +87,43 @@
             }
             
             const dorks = {
-                1: '+filename:.dockercfg',
+                1: '+path:**/.dockercfg',
                 2: '+docker+AND+auth+AND+email',
-                3: '+filename:firefox/logins.json',
+                3: '+path:**/firefox/logins.json',
                 4: '+encryptedUsername+encryptedPassword',
-                5: '+filename:.ssh/id_rsa',
+                5: '+path:**/.ssh/id_rsa',
                 6: '+"BEGIN+RSA+PRIVATE+KEY"+OR+ssh-rsa',
-                7: '+filename:sftp.json',
+                7: '+path:**/sftp.json',
                 8: '+host+AND+pass',
-                9: '+filename:.credentials',
+                9: '+path:**/.credentials',
                 10: '+aws_secret_access_key+aws_secret_key+aws_access_key_id',
-                11: '+filename:.s3cfg',
+                11: '+path:**/.s3cfg',
                 12: '+secret_key',
-                13: '+filename:.tugboat',
+                13: '+path:**/.tugboat',
                 14: '+authentication+AND+api_key',
-                15: 'filename:heroku.json',
+                15: 'path:**/heroku.json',
                 16: '+HEROKU_API_KEY+OR+HEROKU_KEY',
-                17: '+filename:.pgpass',
+                17: '+path:**/.pgpass',
                 18: '+:database:',
-                19: '+filename:dbeaver-data-sources.xml',
+                19: '+path:**/dbeaver-data-sources.xml',
                 20: '+connection+AND+jdbc',
-                21: '+filename:dump.sql',
+                21: '+path:**/dump.sql',
                 22: '+"MySQL+dump"+AND+"INSERT+INTO"',
-                23: '+filename:mongoid.yml',
+                23: '+path:**/mongoid.yml',
                 24: '+production+AND+mongodb',
-                25: '+filename:robomongo.json',
+                25: '+path:**/robomongo.json',
                 26: '+userPassword+AND+serverHost',
-                27: '+filename:filezilla.xml',
+                27: '+path:**/filezilla.xml',
                 28: '+FileZilla3+AND+"Pass+encoding"',
-                29: '+filename:cert-key.pem',
+                29: '+path:**/cert-key.pem',
                 30: '+"BEGIN+PRIVATE+KEY"',
-                31: '+filename:putty extension:ppk',
+                31: '+path:**/putty extension:ppk',
                 32: '+PuTTY-User-Key-File',
-                33: '+filename:settings.py',
+                33: '+path:**/settings.py',
                 34: '+SECRET_KEY',
-                35: '+filename:salesforce.js',
+                35: '+path:**/salesforce.js',
                 36: '+"conn.login("+OR+"+require(jsforce)"',
-                37: '+filename:secrets.yml',
+                37: '+path:**/secrets.yml',
                 38: '+secret_key_base'
             };
 
@@ -130,6 +134,16 @@
             } else {
                 console.error('Invalid type:', type);
             }
+        }
+
+        function changeLinkColor(link) {
+            var lastClickedLink = document.querySelector(".last-clicked");
+
+            if (lastClickedLink) {
+            lastClickedLink.classList.remove("last-clicked");
+            }
+
+            link.classList.add("last-clicked");
         }
     </script>
     
@@ -145,78 +159,78 @@
         <div id="left-pane" style="text-align: left">
             <div style="display: inline-block; text-align: left;">
                 &#128301; 
-                <a href="#" onclick="github_it(1)" class="mytooltip">
-                    .docker/.dockercfg
+                <a href="#" onclick="github_it(1); changeLinkColor(this);" class="mytooltip" class="link">
+                    .docker/.dockercfg 1
                     <span class="tooltiptext"><h6>Docker Registry Authentication Data:</h6>Configuration file used by the Docker client to authenticate to a Docker registry. It contains username, password, and email for the registry and is used to push and pull Docker images.<br><br>Look for:<br>1. auth</span>
                 </a>
                 <br/>
                 &#128301; 
-                <a href="#" onclick="github_it(2)" class="mytooltip">
-                    .docker/.dockercfg - II
+                <a href="#" onclick="github_it(2); changeLinkColor(this);" class="mytooltip">
+                    .docker/.dockercfg 2
                     <span class="tooltiptext"><h6>Docker Registry Authentication Data:</h6>Configuration file used by the Docker client to authenticate to a Docker registry. It contains username, password, and email for the registry and is used to push and pull Docker images.<br><br>Look for:<br>1. auth</span>
                 </a>
                 <br/>
                 &#128301; 
-                <a href="#" onclick="github_it(3)" class="mytooltip">
-                    .mozilla/firefox/logins.json
+                <a href="#" onclick="github_it(3); changeLinkColor(this);" class="mytooltip">
+                    .mozilla/firefox/logins.json 1
                     <span class="tooltiptext"><h6>Firefox Saved Password Collection</h6>This file is a part of the password manager in the Firefox browser. It contains saved login credentials, such as usernames and passwords, that the user has saved while logging into websites.<br><br>Look for:<br>1. encryptedUsername<br>2. encryptedPassword</span>
                 </a>
                 <br/>
                 &#128301; 
-                <a href="#" onclick="github_it(4)" class="mytooltip">
-                    .mozilla/firefox/logins.json - II
+                <a href="#" onclick="github_it(4); changeLinkColor(this);" class="mytooltip">
+                    .mozilla/firefox/logins.json 2
                     <span class="tooltiptext"><h6>Firefox Saved Password Collection</h6>This file is a part of the password manager in the Firefox browser. It contains saved login credentials, such as usernames and passwords, that the user has saved while logging into websites.<br><br>Look for:<br>1. encryptedUsername<br>2. encryptedPassword</span>
                 </a>
                 <br/>
                 &#128301; 
-                <a href="#" onclick="github_it(5)" class="mytooltip">
+                <a href="#" onclick="github_it(5); changeLinkColor(this);" class="mytooltip">
                     .ssh/id_rsa and .ssh/id_rsa.pub
                     <span class="tooltiptext"><h6>RSA SSH Keys</h6>These files are RSA private/public keys used in the Secure Shell (SSH) protocol. It is used to authenticate the user to a remote server, allowing them to establish an encrypted and secure connection.</span>
                 </a>
                 <br/>
                 &#128301; 
-                <a href="#" onclick="github_it(6)" class="mytooltip">
+                <a href="#" onclick="github_it(6); changeLinkColor(this);" class="mytooltip">
                     .ssh/id_rsa and .ssh/id_rsa.pub - II
                     <span class="tooltiptext"><h6>RSA SSH Keys</h6>These files are RSA private/public keys used in the Secure Shell (SSH) protocol. It is used to authenticate the user to a remote server, allowing them to establish an encrypted and secure connection.</span>
                 </a>
                 <br/>
-                &#128301; <a href="#" onclick="github_it(7)">SFTP OR SSH Server Credentials 1</a><br/>
-                &#128301; <a href="#" onclick="github_it(8)">SFTP OR SSH Server Credentials 2</a><br/>
-                &#128301; <a href="#" onclick="github_it(9)">S3 Credentials 1</a><br/>
-                &#128301; <a href="#" onclick="github_it(10)">S3 Credentials 2 </a><br/>
-                &#128301; <a href="#" onclick="github_it(11)">S3 Credentials 3</a><br/>
-                &#128301; <a href="#" onclick="github_it(12)">S3 Credentials 4</a><br/>
-                &#128301; <a href="#" onclick="github_it(13)">Digital Ocean Tugboat Config 1</a><br/>
-                &#128301; <a href="#" onclick="github_it(14)">Digital Ocean Tugboat Config 2</a><br/>
-                &#128301; <a href="#" onclick="github_it(15)">Heroku Config 1</a><br/>
-                &#128301; <a href="#" onclick="github_it(16)">Heroku Config 2</a><br/>
-                &#128301; <a href="#" onclick="github_it(17)">PostgreSQL Passwords 1</a><br/>
-                &#128301; <a href="#" onclick="github_it(18)">PostgreSQL Passwords 2</a><br/>
-                &#128301; <a href="#" onclick="github_it(19)">DBeaver Config Credentials 1</a><br/>
+                &#128301; <a href="#" onclick="github_it(7); changeLinkColor(this);">SFTP OR SSH Server Credentials 1</a><br/>
+                &#128301; <a href="#" onclick="github_it(8); changeLinkColor(this);">SFTP OR SSH Server Credentials 2</a><br/>
+                &#128301; <a href="#" onclick="github_it(9); changeLinkColor(this);">S3 Credentials 1</a><br/>
+                &#128301; <a href="#" onclick="github_it(10); changeLinkColor(this);">S3 Credentials 2 </a><br/>
+                &#128301; <a href="#" onclick="github_it(11); changeLinkColor(this);">S3 Credentials 3</a><br/>
+                &#128301; <a href="#" onclick="github_it(12); changeLinkColor(this);">S3 Credentials 4</a><br/>
+                &#128301; <a href="#" onclick="github_it(13); changeLinkColor(this);">Digital Ocean Tugboat Config 1</a><br/>
+                &#128301; <a href="#" onclick="github_it(14); changeLinkColor(this);">Digital Ocean Tugboat Config 2</a><br/>
+                &#128301; <a href="#" onclick="github_it(15); changeLinkColor(this);">Heroku Config 1</a><br/>
+                &#128301; <a href="#" onclick="github_it(16); changeLinkColor(this);">Heroku Config 2</a><br/>
+                &#128301; <a href="#" onclick="github_it(17); changeLinkColor(this);">PostgreSQL Passwords 1</a><br/>
+                &#128301; <a href="#" onclick="github_it(18); changeLinkColor(this);">PostgreSQL Passwords 2</a><br/>
+                &#128301; <a href="#" onclick="github_it(19); changeLinkColor(this);">DBeaver Config Credentials 1</a><br/>
             </div>
         </div>
 
         <div id="right-pane" style="text-align: left">
             <div style="display: inline-block; text-align: left;">
-                &#128301; <a href="#" onclick="github_it(20)">DBeaver Config Credentials 2</a><br/>
-                &#128301; <a href="#" onclick="github_it(21)">MYSQL Hashes Dump 1</a><br/>
-                &#128301; <a href="#" onclick="github_it(22)">MYSQL Hashes Dump 2</a><br/>
-                &#128301; <a href="#" onclick="github_it(23)">Mongoid Config 1</a><br/>
-                &#128301; <a href="#" onclick="github_it(24)">Mongoid Config 2</a><br/>
-                &#128301; <a href="#" onclick="github_it(25)">Mongolab Credentials For Robomongo 1</a><br/>
-                &#128301; <a href="#" onclick="github_it(26)">Mongolab Credentials For Robomongo 2</a><br/>
-                &#128301; <a href="#" onclick="github_it(27)">Filezilla config 1</a><br/>
-                &#128301; <a href="#" onclick="github_it(28)">Filezilla config 2</a><br/>
-                &#128301; <a href="#" onclick="github_it(29)">PEM Private Key 1</a><br/>
-                &#128301; <a href="#" onclick="github_it(30)">PEM Private Key 2</a><br/>
-                &#128301; <a href="#" onclick="github_it(31)">PuTTYgen Private Key 1</a><br/>
-                &#128301; <a href="#" onclick="github_it(32)">PuTTYgen Private Key 2</a><br/>
-                &#128301; <a href="#" onclick="github_it(33)">Django Secret Key 1</a><br/>
-                &#128301; <a href="#" onclick="github_it(34)">Django Secret Key 2</a><br/>
-                &#128301; <a href="#" onclick="github_it(35)">Salesforce Credentials 1</a><br/>
-                &#128301; <a href="#" onclick="github_it(36)">Salesforce Credentials 2</a><br/>
-                &#128301; <a href="#" onclick="github_it(37)">Ruby on Rails Credentials 1</a><br/>
-                &#128301; <a href="#" onclick="github_it(38)">Ruby on Rails Credentials 2</a><br/>
+                &#128301; <a href="#" onclick="github_it(20); changeLinkColor(this);">DBeaver Config Credentials 2</a><br/>
+                &#128301; <a href="#" onclick="github_it(21); changeLinkColor(this);">MYSQL Hashes Dump 1</a><br/>
+                &#128301; <a href="#" onclick="github_it(22); changeLinkColor(this);">MYSQL Hashes Dump 2</a><br/>
+                &#128301; <a href="#" onclick="github_it(23); changeLinkColor(this);">Mongoid Config 1</a><br/>
+                &#128301; <a href="#" onclick="github_it(24); changeLinkColor(this);">Mongoid Config 2</a><br/>
+                &#128301; <a href="#" onclick="github_it(25); changeLinkColor(this);">Mongolab Credentials For Robomongo 1</a><br/>
+                &#128301; <a href="#" onclick="github_it(26); changeLinkColor(this);">Mongolab Credentials For Robomongo 2</a><br/>
+                &#128301; <a href="#" onclick="github_it(27); changeLinkColor(this);">Filezilla config 1</a><br/>
+                &#128301; <a href="#" onclick="github_it(28); changeLinkColor(this);">Filezilla config 2</a><br/>
+                &#128301; <a href="#" onclick="github_it(29); changeLinkColor(this);">PEM Private Key 1</a><br/>
+                &#128301; <a href="#" onclick="github_it(30); changeLinkColor(this);">PEM Private Key 2</a><br/>
+                &#128301; <a href="#" onclick="github_it(31); changeLinkColor(this);">PuTTYgen Private Key 1</a><br/>
+                &#128301; <a href="#" onclick="github_it(32); changeLinkColor(this);">PuTTYgen Private Key 2</a><br/>
+                &#128301; <a href="#" onclick="github_it(33); changeLinkColor(this);">Django Secret Key 1</a><br/>
+                &#128301; <a href="#" onclick="github_it(34); changeLinkColor(this);">Django Secret Key 2</a><br/>
+                &#128301; <a href="#" onclick="github_it(35); changeLinkColor(this);">Salesforce Credentials 1</a><br/>
+                &#128301; <a href="#" onclick="github_it(36); changeLinkColor(this);">Salesforce Credentials 2</a><br/>
+                &#128301; <a href="#" onclick="github_it(37); changeLinkColor(this);">Ruby on Rails Credentials 1</a><br/>
+                &#128301; <a href="#" onclick="github_it(38); changeLinkColor(this);">Ruby on Rails Credentials 2</a><br/>
         </div>
     </div>
 </body>
